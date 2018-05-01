@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "babel-preset-stage-2": "^6.24.1",
+    "bootstrap": "4.0.0-alpha.6",
     "cors-anywhere": "^0.4.1",
     "css-loader": "^0.28.10",
     "extract-text-webpack-plugin": "^3.0.2",

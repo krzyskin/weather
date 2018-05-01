@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'whatwg-fetch';
-import regeneratorRuntime from "regenerator-runtime";
+import 'bootstrap/dist/css/bootstrap-reboot.min.css'
 
 const apiKey = "6f46d4d5fd648710bff4cf141677e29b";
 
@@ -18,6 +18,8 @@ class Weather extends React.Component {
                 {this.props.temperature && <p>temperature: {this.props.temperature}</p>}
                 {this.props.humidity && <p>humidity: {this.props.humidity}</p>}
                 {this.props.description && <p>conditions: {this.props.description}</p>}
+                {this.props.id && <p>id: {this.props.id}</p>}
+
                 {this.props.error && <p>{this.props.error}</p>}
             </div>
         )
@@ -49,7 +51,13 @@ class Titles extends React.Component {
         )
     }
 }
-
+class Back extends React.Component {
+    render() {
+        return (
+        <div className={this.props.id}></div>
+        )
+     }
+ }
 class App extends React.Component {
     constructor(props) {
         super();
@@ -59,15 +67,16 @@ class App extends React.Component {
             country: undefined,
             humidity: undefined,
             description: undefined,
+            id: undefined,
             error: undefined
         }
     }
 
     getWeather = (e) => {
         e.preventDefault();
-        const city = e.target[0].value;
-        const country = e.target[1].value;
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metriC`).then(r => r.json()).then(data => {
+        const city = e.target.elements.city.value;
+        const country = e.target.elements.country.value;
+        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`).then(r => r.json()).then(data => {
 
 
             if (city && country) {
@@ -79,8 +88,15 @@ class App extends React.Component {
                     country: data.sys.country,
                     humidity: data.main.humidity,
                     description: data.weather[0].description,
+                    id: data.weather[0].id,
                     error: ""
+
                 });
+                if (this.state.temperature>15){
+                    console.log("ciepło");
+                }else{
+                    console.log("zimno");
+                }
             } else {
                 this.setState({
                     temperature: undefined,
@@ -88,17 +104,23 @@ class App extends React.Component {
                     country: undefined,
                     humidity: undefined,
                     description: undefined,
-                    error: "Please enter the values"
+                    id: 0,
+                    error: "Please enter the localisation You are looking for..."
+
                 });
             }
+
         }).catch(e => {
             console.log('Błąd!', e)
         });
+
+
     }
 
     render() {
         return (
             <div>
+                <Back/>
                 <Titles/>
                 <Form getWeather={this.getWeather}/>
                 <Weather
@@ -107,6 +129,7 @@ class App extends React.Component {
                     country={this.state.country}
                     humidity={this.state.humidity}
                     description={this.state.description}
+                    id={this.state.id}
                     error={this.state.error}
                 />
             </div>
@@ -124,6 +147,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /*
 ANOTHER WAY:
+import regeneratorRuntime from "regenerator-runtime";
+
 
 getWeather = async (e) => {
   e.preventDefault();
