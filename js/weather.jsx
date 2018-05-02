@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'whatwg-fetch';
-import 'bootstrap/dist/css/bootstrap-reboot.min.css'
+import 'bootstrap/dist/css/bootstrap-reboot.min.css';
+import '../css/style.css';
 
 const apiKey = "6f46d4d5fd648710bff4cf141677e29b";
 
@@ -18,11 +19,12 @@ class Weather extends React.Component {
                 {this.props.temperature && <p>temperature: {this.props.temperature}</p>}
                 {this.props.humidity && <p>humidity: {this.props.humidity}</p>}
                 {this.props.description && <p>conditions: {this.props.description}</p>}
-                {this.props.id && <p>id: {this.props.id}</p>}
+
 
                 {this.props.error && <p>{this.props.error}</p>}
             </div>
         )
+        //{this.props.id && <p>id: {this.props.id}</p>}
     }
 }
 
@@ -51,10 +53,18 @@ class Titles extends React.Component {
         )
     }
 }
-class Back extends React.Component {
+class Image extends React.Component {
+    constructor(props) {
+        super(props);
+
+    }
     render() {
+
         return (
-        <div className={this.props.id}></div>
+            <div className="weather">
+                {this.props.icon && <img  src={`http://openweathermap.org/img/w/${this.props.icon}.png`} className="weather-image"/>}
+
+            </div>
         )
      }
  }
@@ -68,6 +78,7 @@ class App extends React.Component {
             humidity: undefined,
             description: undefined,
             id: undefined,
+            icon:undefined,
             error: undefined
         }
     }
@@ -89,6 +100,7 @@ class App extends React.Component {
                     humidity: data.main.humidity,
                     description: data.weather[0].description,
                     id: data.weather[0].id,
+                    icon: data.weather[0].icon,
                     error: ""
 
                 });
@@ -104,7 +116,8 @@ class App extends React.Component {
                     country: undefined,
                     humidity: undefined,
                     description: undefined,
-                    id: 0,
+                    id: undefined,
+                    icon: undefined,
                     error: "Please enter the localisation You are looking for..."
 
                 });
@@ -117,12 +130,14 @@ class App extends React.Component {
 
     }
 
+
     render() {
         return (
             <div>
-                <Back/>
+
                 <Titles/>
                 <Form getWeather={this.getWeather}/>
+                <Image  icon={this.state.icon} />
                 <Weather
                     temperature={this.state.temperature}
                     city={this.state.city}
@@ -130,6 +145,7 @@ class App extends React.Component {
                     humidity={this.state.humidity}
                     description={this.state.description}
                     id={this.state.id}
+
                     error={this.state.error}
                 />
             </div>
