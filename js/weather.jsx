@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'whatwg-fetch';
-import 'bootstrap/dist/css/bootstrap-reboot.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/style.css';
 
 const apiKey = "6f46d4d5fd648710bff4cf141677e29b";
@@ -134,24 +134,40 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                <div className="wrapper">
+                    <div className="main">
+                        <div className="container">
+                            <div className="row">
+                                <div className={`col-sm-5 weather-${this.state.id}`}>
+                                    <div>
+                                    <Titles/>
+                                    <Image  icon={this.state.icon} />
+                                    </div>
+                                </div>
+                                <div className="col-sm-7 form-container">
+                                    <Form getWeather={this.getWeather}/>
 
-                <Titles/>
-                <Form getWeather={this.getWeather}/>
-                <Image  icon={this.state.icon} />
-                <Weather
-                    temperature={this.state.temperature}
-                    city={this.state.city}
-                    country={this.state.country}
-                    humidity={this.state.humidity}
-                    description={this.state.description}
-                    id={this.state.id}
+                                    <Weather
+                                        temperature={this.state.temperature}
+                                        city={this.state.city}
+                                        country={this.state.country}
+                                        humidity={this.state.humidity}
+                                        description={this.state.description}
+                                        id={this.state.id}
 
-                    error={this.state.error}
-                />
+                                        error={this.state.error}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         )
     }
 }
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
