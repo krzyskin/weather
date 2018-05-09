@@ -11,7 +11,7 @@ class Weather extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="info">
                 {this.props.city && this.props.country && <p>Location: {this.props.city}, {this.props.country}</p>}
                 {this.props.temperature && <p>temperature: {this.props.temperature}</p>}
                 {this.props.pressure && <p>pressure: {this.props.pressure} hPa</p>}
@@ -151,7 +151,7 @@ class App extends React.Component {
                     <div className="main">
                         <div className="container">
                             <div className="row">
-                                <div className={`col-sm-5 title-container weather-${this.state.id}`}>
+                                <div className={`col-sm-5 image-container weather-${this.state.id}`}>
                                         <Titles/>
                                         <Image  class={this.state.class}
                                                 id={this.state.id}
