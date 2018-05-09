@@ -2,10 +2,15 @@ body{
     color:red;
 }
 img{
-    height: 50px;
-    width: 50px;
-}
 
+    height: 100px;
+    width: 100px;
+}
+i{
+    font-size:200px;
+
+    color:silver;
+}
 .container{
     width:1100px;
     height: 90vh;
@@ -35,5 +40,5 @@ img{
 }
 .weather-800{
     background: url(../images/clouds&sun.jpg);
-;
+    background-size: cover;
 }

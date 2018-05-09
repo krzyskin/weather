@@ -5,3 +5,9 @@ yarn.lock
 webpack.config.js
 yarn-error.log
 package.json
+font
+images
+weather-icons.css
+weather-icons.min.css
+weather-icons-wind.css
+weather-icons-wind.min.css
