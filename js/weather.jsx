@@ -88,7 +88,6 @@ class App extends React.Component {
 
 
             if (city && country) {
-                console.log(data);
 
                 this.setState({
                     city: data.name,
@@ -105,12 +104,12 @@ class App extends React.Component {
 
                 });
                 if (this.state.icon[2] == "d") {
-                    console.log("dzień");
+
                     this.setState({
                         class: "-day"
                     })
                 } else if (this.state.icon[2] == "n") {
-                    console.log("noc");
+
                     this.setState({
                         class: "-night"
                     })
