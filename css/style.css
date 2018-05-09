@@ -1,29 +1,10 @@
 
-
-i{
-    font-size:170px;
-    color: #424242;
-
-}
 .container{
     width:1100px;
     height: 90vh;
     background: url(../images/clouds.jpg);
 }
-.image-container{
-    color: #222222;
-    display:flex;
-    text-align: center;
-    justify-content:space-evenly;
-    flex-direction: column;
-    background-size: cover;
-    height: 100%;
-}
-.form-container{
-    padding-top:100px;
-    height: 100%;
 
-}
 .wrapper{
     height: 100%;
 }
@@ -34,6 +15,26 @@ i{
     height: 100%;
 }
 
+.image-container{
+    color: rgba(20, 20, 20, 0.89);
+    display:flex;
+    text-align: center;
+    justify-content:space-evenly;
+    flex-direction: column;
+    background-size: cover;
+    height: 100%;
+}
+.form-container{
+    padding-top:100px;
+    height: 100%;
+    color: rgba(0, 0, 0, 0.89);
+}
+
+i{
+    font-size:170px;
+    color: rgb(18, 18, 18);
+
+}
 .info{
     margin-top:2em;
     display:flex;
@@ -44,7 +45,21 @@ i{
 form input{
     display: block;
     float:left;
+    background: none;
+    border-top:none;
+    border-right:none;
+    border-left:none;
+    border-bottom-color: #8b0740;
+    margin:2em;
+    color:#8b0740;
+}
+
+::placeholder {
+    color:#8b0740;
 }
 button{
-    float:none;
+    margin-left:3em;
+    border-radius: 5%;
+    background-color: rgba(80, 144, 206, 0.6);
+    border-color:rgba(80, 144, 206, 0.8);
 }
