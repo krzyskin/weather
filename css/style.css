@@ -1,13 +1,9 @@
 body{
     color:red;
 }
-img{
 
-    height: 100px;
-    width: 100px;
-}
 i{
-    font-size:200px;
+    font-size:180px;
 
     color:silver;
 }
@@ -16,9 +12,14 @@ i{
     height: 90vh;
 }
 .title-container{
-
-    background: deeppink;
-    height: 80vh;
+    color:white;
+    background: url(../images/clouds&sun.jpg);
+    display:flex;
+    text-align: center;
+    justify-content:space-evenly;
+    flex-direction: column;
+    background-size: cover;
+    height: 100%;
 }
 .form-container{
     padding-top:100px;
@@ -34,11 +35,4 @@ i{
 .row{
     height: 80vh;
 }
-.col-sm-5.div{
-    height: 100%;
 
-}
-.weather-800{
-    background: url(../images/clouds&sun.jpg);
-    background-size: cover;
-}

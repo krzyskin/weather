@@ -14,7 +14,8 @@ class Weather extends React.Component {
             <div>
                 {this.props.city && this.props.country && <p>Location: {this.props.city}, {this.props.country}</p>}
                 {this.props.temperature && <p>temperature: {this.props.temperature}</p>}
-                {this.props.humidity && <p>humidity: {this.props.humidity}</p>}
+                {this.props.pressure && <p>pressure: {this.props.pressure} hPa</p>}
+                {this.props.humidity && <p>humidity: {this.props.humidity}%</p>}
                 {this.props.description && <p>conditions: {this.props.description}</p>}
                 {this.props.error && <p>{this.props.error}</p>}
 
@@ -44,6 +45,7 @@ class Titles extends React.Component {
         return (
             <div>
                 <h1>Weather</h1>
+                <h2>at the moment...</h2>
             </div>
         )
     }
@@ -65,9 +67,11 @@ class App extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            temperature: undefined,
+
             city: undefined,
             country: undefined,
+            temperature: undefined,
+            pressure: undefined,
             humidity: undefined,
             description: undefined,
             id: undefined,
@@ -88,9 +92,10 @@ class App extends React.Component {
                 console.log(data);
 
                 this.setState({
-                    temperature: data.main.temp,
                     city: data.name,
                     country: data.sys.country,
+                    temperature: data.main.temp,
+                    pressure: data.main.pressure,
                     humidity: data.main.humidity,
                     description: data.weather[0].description,
                     id: data.weather[0].id,
@@ -116,9 +121,10 @@ class App extends React.Component {
 
             } else {
                 this.setState({
-                    temperature: undefined,
                     city: undefined,
                     country: undefined,
+                    temperature: undefined,
+                    pressure: undefined,
                     humidity: undefined,
                     description: undefined,
                     id: undefined,
@@ -145,21 +151,20 @@ class App extends React.Component {
                     <div className="main">
                         <div className="container">
                             <div className="row">
-                                <div className={`col-sm-5 weather-${this.state.id}`}>
-                                    <div>
+                                <div className={`col-sm-5 title-container weather-${this.state.id}`}>
                                         <Titles/>
                                         <Image  class={this.state.class}
                                                 id={this.state.id}
                                         />
-                                    </div>
                                 </div>
                                 <div className="col-sm-7 form-container">
                                     <Form getWeather={this.getWeather}/>
 
                                     <Weather
-                                        temperature={this.state.temperature}
                                         city={this.state.city}
                                         country={this.state.country}
+                                        temperature={this.state.temperature}
+                                        pressure={this.state.pressure}
                                         humidity={this.state.humidity}
                                         description={this.state.description}
                                         id={this.state.id}
