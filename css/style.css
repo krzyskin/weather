@@ -3,11 +3,10 @@
     width:1100px;
     height: 90vh;
     background: url(../images/clouds.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.wrapper{
-    height: 100%;
-}
 .main{
     height: 100%;
 }
@@ -21,20 +20,21 @@
     text-align: center;
     justify-content:space-evenly;
     flex-direction: column;
-    background-size: cover;
     height: 100%;
-}
-.form-container{
-    padding-top:100px;
-    height: 100%;
-    color: rgba(0, 0, 0, 0.89);
 }
 
+
 i{
-    font-size:170px;
+    font-size:14em;
     color: rgb(18, 18, 18);
 
 }
+
+.form-container{
+    padding-top:100px;
+    height: 100%;
+}
+
 .info{
     margin-top:2em;
     display:flex;
@@ -45,13 +45,13 @@ i{
 form input{
     display: block;
     float:left;
-    background: none;
+    background: transparent;
     border-top:none;
     border-right:none;
     border-left:none;
-    border-bottom-color: #8b0740;
+    border-bottom-color: rgba(49, 97, 186, 0.9);
     margin:2em;
-    color:#8b0740;
+    outline: none;
 }
 
 ::placeholder {
@@ -62,4 +62,7 @@ button{
     border-radius: 5%;
     background-color: rgba(80, 144, 206, 0.6);
     border-color:rgba(80, 144, 206, 0.8);
+}
+span{
+    color: rgba(139, 6, 5, 0.9);
 }

@@ -12,13 +12,13 @@ class Weather extends React.Component {
     render() {
         return (
             <div className="info">
-                {this.props.city && this.props.country && <p>Location: {this.props.city}, {this.props.country}</p>}
-                {this.props.temperature && <p>temperature: {this.props.temperature}</p>}
-                {this.props.pressure && <p>pressure: {this.props.pressure} hPa</p>}
-                {this.props.humidity && <p>humidity: {this.props.humidity}%</p>}
-                {this.props.description && <p>conditions: {this.props.description}</p>}
+                {this.props.city && this.props.country &&
+                <p><span>Location:</span> {this.props.city}, {this.props.country}</p>}
+                {this.props.temperature && <p><span>Temperature:</span> {this.props.temperature} &#x2103;</p>}
+                {this.props.pressure && <p><span>Air pressure:</span> {this.props.pressure} hPa</p>}
+                {this.props.humidity && <p><span>Humidity:</span> {this.props.humidity}%</p>}
+                {this.props.description && <p><span>Conditions:</span> {this.props.description}</p>}
                 {this.props.error && <p>{this.props.error}</p>}
-
             </div>
         )
     }
@@ -32,7 +32,6 @@ class Form extends React.Component {
                 <input type="text" name="city" placeholder=" City . . ."/>
                 <input type="text" name="country" placeholder=" Country . . ."/>
                 <button>Get Weather</button>
-
             </form>
         )
     }
@@ -50,6 +49,7 @@ class Titles extends React.Component {
         )
     }
 }
+
 class Image extends React.Component {
 
     render() {
@@ -59,10 +59,9 @@ class Image extends React.Component {
                 <i className={`wi wi-owm${this.props.class}-${this.props.id}`}></i>
             </div>
         )
-        //{this.props.icon && <img  src={`http://openweathermap.org/img/w/${this.props.icon}.png`} className="weather-image"/>}
-
     }
- }
+}
+
 class App extends React.Component {
     constructor(props) {
         super();
@@ -75,8 +74,8 @@ class App extends React.Component {
             humidity: undefined,
             description: undefined,
             id: undefined,
-            icon:undefined,
-            class:'',
+            icon: undefined,
+            class: '',
             error: undefined
         }
     }
@@ -99,25 +98,23 @@ class App extends React.Component {
                     humidity: data.main.humidity,
                     description: data.weather[0].description,
                     id: data.weather[0].id,
-                    icon:data.weather[0].icon,
-                    class:'',
+                    icon: data.weather[0].icon,
+                    class: '',
                     error: ""
 
 
                 });
-                if(this.state.icon[2]=="d"){
+                if (this.state.icon[2] == "d") {
                     console.log("dzień");
                     this.setState({
                         class: "-day"
                     })
-                }else if(this.state.icon[2]=="n"){
+                } else if (this.state.icon[2] == "n") {
                     console.log("noc");
                     this.setState({
                         class: "-night"
                     })
                 }
-
-
 
             } else {
                 this.setState({
@@ -129,7 +126,7 @@ class App extends React.Component {
                     description: undefined,
                     id: undefined,
                     icon: undefined,
-                    class:'',
+                    class: '',
                     error: "Please enter the localisation You are looking for..."
 
                 });
@@ -139,7 +136,6 @@ class App extends React.Component {
             console.log('Błąd!', e)
         });
 
-
     };
 
 
@@ -147,41 +143,40 @@ class App extends React.Component {
 
         return (
             <div>
-                <div className="wrapper">
-                    <div className="main">
-                        <div className="container">
-                            <div className="row">
-                                <div className={`col-sm-5 image-container weather-${this.state.id}`}>
-                                        <Titles/>
-                                        <Image  class={this.state.class}
-                                                id={this.state.id}
-                                        />
-                                </div>
-                                <div className="col-sm-7 form-container">
-                                    <Form getWeather={this.getWeather}/>
+                <div className="main">
+                    <div className="container">
+                        <div className="row">
+                            <div className={`col-sm-5 image-container weather-${this.state.id}`}>
+                                <Titles/>
+                                <Image
+                                    class={this.state.class}
+                                    id={this.state.id}
+                                />
+                            </div>
+                            <div className="col-sm-7 form-container">
+                                <Form getWeather={this.getWeather}/>
 
-                                    <Weather
-                                        city={this.state.city}
-                                        country={this.state.country}
-                                        temperature={this.state.temperature}
-                                        pressure={this.state.pressure}
-                                        humidity={this.state.humidity}
-                                        description={this.state.description}
-                                        id={this.state.id}
-                                        error={this.state.error}
+                                <Weather
+                                    city={this.state.city}
+                                    country={this.state.country}
+                                    temperature={this.state.temperature}
+                                    pressure={this.state.pressure}
+                                    humidity={this.state.humidity}
+                                    description={this.state.description}
+                                    id={this.state.id}
+                                    error={this.state.error}
 
-                                    />
-                                </div>
+                                />
                             </div>
                         </div>
                     </div>
                 </div>
 
+
             </div>
         )
     }
 }
-
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -190,16 +185,3 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('app')
     );
 });
-
-/*
-ANOTHER WAY:
-import regeneratorRuntime from "regenerator-runtime";
-
-
-getWeather = async (e) => {
-  e.preventDefault();
-  const city = e.target.elements.city.value;
-  const country = e.target.elements.country.value;
-  const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`);
-  const data = await api_call.json();
-*/
