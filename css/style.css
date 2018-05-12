@@ -52,6 +52,8 @@ form input{
     border-bottom-color: rgba(49, 97, 186, 0.9);
     margin:2em;
     outline: none;
+    color:darkred;
+
 }
 
 ::placeholder {
