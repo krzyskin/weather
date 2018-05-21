@@ -145,15 +145,15 @@ class App extends React.Component {
                 <div className="main">
                     <div className="container">
                         <div className="row">
-                            <div className={`col-sm-5 image-container weather-${this.state.id}`}>
+                            <div className={`col-sm-6 image-container weather-${this.state.id}`}>
                                 <Titles/>
                                 <Image
                                     class={this.state.class}
                                     id={this.state.id}
                                 />
                             </div>
-                            <div className="col-sm-7 form-container">
-                                <Form getWeather={this.getWeather}/>
+                            <div className="col-sm-6 form-container">
+
 
                                 <Weather
                                     city={this.state.city}
@@ -166,6 +166,7 @@ class App extends React.Component {
                                     error={this.state.error}
 
                                 />
+                                <Form getWeather={this.getWeather}/>
                             </div>
                         </div>
                     </div>

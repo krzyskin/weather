@@ -1,16 +1,14 @@
 
 .container{
-    width:1100px;
-    height: 90vh;
+    width:100wh;
+    height: 100vh;
     background: url(../images/clouds.jpg);
     filter:opacity(90%);
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-.main{
-    height: 100%;
-}
+
 .row{
     height: 100%;
 }
@@ -26,7 +24,7 @@
 
 
 i{
-    font-size:14em;
+    font-size:200px;
     color: rgba(18, 18, 18, 0.8);
 
 
@@ -38,11 +36,11 @@ i{
 }
 
 .info{
-    margin-top:2em;
+    margin-top:32px;
     display:flex;
     flex-direction: column;
     text-align: center;
-    font-size:1.6em;
+    font-size:25px;
 }
 form input{
     display: block;
@@ -52,7 +50,7 @@ form input{
     border-right:none;
     border-left:none;
     border-bottom-color: rgba(49, 97, 186, 0.9);
-    margin:2em;
+    margin:32px;
     outline: none;
     color: rgba(171, 0, 0, 0.9);
     text-transform: uppercase;
@@ -63,11 +61,39 @@ form input{
     text-transform: none;
 }
 button{
-    margin-left:3em;
+    margin-left:48px;
     border-radius: 5%;
     background-color: rgba(80, 144, 206, 0.6);
     border-color:rgba(80, 144, 206, 0.8);
 }
 span{
     color: rgba(139, 6, 5, 0.9);
+}
+@media screen and (max-width: 576px) {
+
+    .image-container, .form-container {
+        height: auto;
+    }
+    i{
+        margin-top:50px;
+    }
+    .form-container{
+        padding-top: 0;
+    }
+    .form-container form{
+        display:flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+
+    }
+    form input{
+        margin:10px;
+    }
+    button{
+        margin:auto;
+    }
+    p{
+        margin-bottom: 0;
+    }
 }
